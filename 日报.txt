@@ -1,0 +1,97 @@
+2019-1-10
+一.上课内容
+1@Aspect注解形式,在xml定义扫描器和PECTJ注解 :
+
+   <context:component-scan base-package="org.great.mybean" annotation-config="true"/>  
+
+   <aop:aspectj-autoproxy proxy-target-class="true" /> 
+定义目标类:<bean>或者java注解
+2增强类
+①切入点用注解@Pointcut(切入点方法)
+注解@around和afterthrowing不能同时出现,否则afterthrowing失效
+例子:
+@Aspect
+@Component
+public class LinhanAppoinCut {
+
+	@Pointcut("execution(* *.getPartner(..))")
+	public void getman() {
+
+	}
+
+	@Before("getman()")
+	public void beforgetMan() {
+		System.out.println("紧张,很虚@Before");
+	}
+
+	@After("getman()")
+	public void aftergetMan() {
+		System.out.println("高兴@After");
+	}
+
+	// 异常增强
+	@AfterThrowing(value = "execution(* *.getPartner(..))")
+	public void afterThrowing() throws Throwable {
+		System.out.println("异常增强@AfterThrowing");
+	}
+
+	@Around(value = "execution(* *.getPartner(..))")
+	public void around() {
+		System.out.println("环绕@Around");
+	}
+
+	@AfterReturning("getman()")
+	public void run() {
+		System.out.println("高兴吗@AfterReturning");
+	}
+}
+二.心得体会
+日志内容,首先通过一个要调用的方法,反推找到这个方法的类进而方法名,然后遍历找到@下的Log类获取里面的方法返回字符串
+
+2019-1-9 spring AOP
+1.AOP是横向切面编程通过编译方式和运行期动态代理实现成功能.对业务逻辑的各个部分进行隔离,常用于事务统计,日志记录,安全控制,异常处理等
+2.AOP术语:①连接点,②切点③通知④目标对象
+⑤引入⑥织入⑦切面
+其中通知分为:前置通知,后置通知,环绕通知,事后返回通知和异常通知
+二,三个问题
+JVM加载Class文件的原理机制
+	java加载是由类加载器及其子类来实现的.Java中所有的类加载到jvm中才能运行
+java中的类大致分为三种:①系统类②拓展类③自定义类
+①类装载方式有两种:隐式装载,通过new出来的对象.
+②显式装载:class.forName()等方法加载类.
+类加载的动态性体现:
+加载器总是先把程序运行的基础类先加载进jvm中,保证程序能够运行,然后当要用到某个类时,再把它加载到jvm中,
+来节省内存的开销,
+java的类装载器:Bootstrap Loader:系统类加载器(Bootstrap) – JRE/lib/rt.jar
+	      ExClassLoader:扩展类加载器(Extension)--JRE/lib/ext或者java.ext.dirs指向的目录
+	      AppClassLoader:应用类(自定义类)加载器(Application)--CLASSPATH环境变量, 由-classpath或-cp选项定义,或者是JAR中的Manifest的classpath属性定义
+加载类之间如何协调工作:
+①委托机制
+类.Class__请求==>application__委托==>Extension__委托==>Bootstrap
+Bootstrap先看看rt.jar中有没有这个类__有就加载,如果没有返回请求==>Extension在jre/lib/ext查找这个类__有就加载,如果没有返回请求==>application__从classpath中寻找加载
+②可见性机制
+子类加载器可以看到父类加载器加载的类,反之,不行
+③单一性机制
+父类加载过的类不能被子类加载
+类的加载过程:
+1)装载:查找和加载类的二进制数据
+2)链接:
+①验证(确保加载类的正确性),
+②准备(为类的静态变量赋予正确的初始值),
+③解析(把类中的引用转换为直接引用)
+
+3)初始化:为类的静态变量赋予正确的初始值
+类的初始化:
+2.jvm/jdk/jre之间的关系
+JDK（Java Development Kit）是针对Java开发员的产品，是整个Java的核心，包括了Java运行环境JRE、Java工具和Java基础类库。
+Java Runtime Environment（JRE）是运行JAVA程序所必须的环境的集合,包含JVM标准实现及Java核心类库。
+JVM是Java Virtual Machine（Java虚拟机）的缩写，是整个java实现跨平台的最核心的部分，能够运行以Java语言写作的软件程序。
+jdk包含jre,jre包含jvm
+3斗地主项目中,如何实现游戏的发牌和出牌功能
+1.实现以上功能的核心技术有:状态机,指针轮转,springMVC框架,牌型识别技术,ai逻辑(出牌逻辑,跟牌逻辑)
+发牌:1随机抽取三张牌为底牌,2先找出发牌的第一个玩家,以指针轮转的形式逐个发牌
+3发牌完毕后,开始按指针轮转开始叫分
+4加分结束后,开始发牌,分为玩家跟电脑,根据预定好的牌型和ai逻辑进行出牌跟牌
+5当任意一家手中的牌数为0时,则游戏结束
+
+
