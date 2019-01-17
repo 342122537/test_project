@@ -1,0 +1,54 @@
+/* CSS Document */
+.all {
+	float: right;
+	border-top-style: solid;
+	border-top-width: 5px;
+	border-top-color: #03F;
+	margin: 0px;
+	padding: 0px;
+	border: #000 1px solid
+}
+
+#d1, #d2 {
+	float: right;
+	width: 100%;
+	height: 20px;
+	color: #009;
+	background: #FFF;
+	text-align: right;
+	margin: 0px;
+	padding: 0px;
+}
+
+h2 {
+	color: #03F;
+	width: 50%;
+	margin: 0px aoto;
+}
+
+#hh {
+	width: 50%;
+	margin: 0px auto;
+}
+
+#d3 {
+	width: 100%;
+	height: 15px;
+	margin: 0px;
+	padding: 0px;
+}
+
+.localtime {
+	width: 100%;
+	text-align: right;
+	color: #FFF
+}
+
+p {
+	color: #FFF
+}
+
+#exit {
+	float: right;
+	margin-left: 30px;
+}

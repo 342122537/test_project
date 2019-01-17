@@ -1,0 +1,127 @@
+/* CSS Document */
+#login {
+	width: 450px;
+	height: 320px;
+	border: #00C 1px solid;
+	margin: 30px auto
+}
+
+#addddd {
+	width: 440px;
+	height: 450px;
+	border: #00C 1px solid;
+	margin: 10px auto
+}
+
+#upadte {
+	width: 440px;
+	height: 350px;
+	border: #00C 1px solid;
+	margin: 30px auto
+}
+#upadtepwd{
+	width: 440px;
+
+	height: 390px;
+	border: #00C 1px solid;
+	margin: 30px auto
+}
+
+#line {
+	width: 100%;
+	height: 30px;
+	background: #03F;
+}
+
+#word {
+	width: 60%;
+	margin: 10px auto;
+	font-size: 28px;
+	color: #F63;
+	letter-spacing: 5px;
+}
+
+form div {
+	width: 390px;
+	margin-left: 100px;
+	height: 50px;
+	margin-top: 10px;
+}
+
+#upwd {
+	margin-left: 30px;
+	width: 150px
+}
+
+#uname {
+	margin-left: 30px;
+	width: 150px;
+}
+#s_number {
+	margin-left: 30px;
+	width: 150px;
+}
+
+#sexname {
+	margin-left: 30px;
+	width: 150px;
+}
+
+#chickChar {
+	margin-left: 30px;
+	width: 150px;
+}
+
+#con {
+	margin-left: 30px;
+	width: 50px;
+}
+
+#conCode {
+	margin-left: 10px;
+	letter-spacing: 2px;
+	font-size: 14px;
+	color: #630;
+}
+
+a {
+	margin-left: 15px;
+}
+
+#sub {
+	width: 70px;
+	color: #03F;
+	margin-top: 4px;
+	margin-left: 85px;
+	letter-spacing: 18px;
+	padding-left: 10px;
+	padding-rigth: 10px;
+}
+
+#unameNone {
+	color: #900;
+}
+
+#upwdNone {
+	color: #900;
+}
+
+#conError {
+	color: #900;
+	margin-left: 10px;
+}
+
+#sub1 {
+	width: 100px;
+	margin: 4px auto;
+}
+
+select {
+	margin-left: 15px;
+}
+
+select option {
+	margin-left: 10px;
+	width: 80px;
+	height: 20px;
+}
